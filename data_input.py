@@ -60,5 +60,5 @@ def vocabulary(dataset=generate_train_dataset()):
     return set(vocabulary)
 
 # Declaring Consts
-VOCABULARY = vocabulary() # For standard, referees to the train dataset
+VOCABULARY = sorted(vocabulary()) # For standard, referees to the train dataset
 VOCABULARY_SIZE = len(VOCABULARY)
