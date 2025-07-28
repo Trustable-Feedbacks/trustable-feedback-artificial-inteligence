@@ -36,6 +36,6 @@ MODEL = create_model()
 # Compiles the model:
 MODEL.compile(
     optimizer='adam',
-    loss='Cross Entropy Loss',
+    loss='binary_crossentropy',
     metrics=['accuracy']
 )
