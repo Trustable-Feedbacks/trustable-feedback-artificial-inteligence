@@ -6,7 +6,6 @@ def create_model():
     # Creates the inputs:
     text_input = tf.keras.Input(shape=(50,))
     grade_input = tf.keras.Input(shape=(1,))
-    fairly_input = tf.keras.Input(shape=(1,))
     
     # Creates the layers for each input:
         # For the text:
@@ -17,11 +16,8 @@ def create_model():
         # For the grades:
     grade_layer = tf.keras.layers.Dense(units=5)(grade_input)
 
-        # For the fairly:
-    fairly_layer = tf.keras.layers.Dense(units=5)(fairly_input)
-
     # Concatenates the layers:
-    concatenated = tf.keras.layers.concatenate([text_layer, grade_layer, fairly_layer]) 
+    concatenated = tf.keras.layers.concatenate([text_layer, grade_layer]) 
 
     # Continues the model:
     output = tf.keras.layers.Dense(units=150, activation='relu')(concatenated)
@@ -31,7 +27,7 @@ def create_model():
     
     # Builds and returns the model
     return tf.keras.Model(
-        inputs=[text_input, grade_input, fairly_input],
+        inputs=[text_input, grade_input],
         outputs=output
     )
 
@@ -40,6 +36,6 @@ MODEL = create_model()
 # Compiles the model:
 MODEL.compile(
     optimizer='adam',
-    loss='Cross Entropy Loss',
+    loss='binary_crossentropy',
     metrics=['accuracy']
 )
