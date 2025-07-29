@@ -12,7 +12,7 @@ RUN pip install --upgrade pip setuptools wheel
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install numpy==1.24.3
+RUN pip install numpy==1.23.5
 COPY . .
 
 CMD ["python", "consult.py"]
