@@ -31,4 +31,4 @@ COPY . .
 EXPOSE 5000
 
 # Comando de inicialização (ajuste se seu app for diferente)
-CMD ["python", "app.py"]
+CMD ["python", "consult.py"]
