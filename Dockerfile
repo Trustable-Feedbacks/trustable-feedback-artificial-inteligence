@@ -1,21 +1,22 @@
-FROM python:3.10-slim
+FROM python:3.11-slim-bullseye
 
-WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libffi-dev \
+    python3-dev \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Atualiza pip, setuptools e wheel
+# Atualiza pip
 RUN pip install --upgrade pip setuptools wheel
 
-# Copia o requirements.txt para o container
+# Copia requirements.txt e instala dependências
 COPY requirements.txt .
-
-# Instala as dependências
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia o restante do projeto
 COPY . .
 
-# Expõe a porta que sua app vai usar (exemplo 5000)
-EXPOSE 5000
-
-# Comando para rodar sua aplicação - ajuste para seu script principal
 CMD ["python", "consult.py"]
+
+#FILE MADE BY CHATGPT
