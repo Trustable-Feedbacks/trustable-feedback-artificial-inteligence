@@ -42,6 +42,8 @@ def generate_encoded_fairly_lable(dataset):
                                for dict in dataset])
 
 # Function to preprocess the dataset:
-def preprocess(dataset):
+def preprocess(dataset, isConsult=False):
     text_list = clean_text(dataset)
+    if (isConsult):
+        return generate_padded_text_sequence(text_list), generate_encoded_grade_lable(dataset)
     return generate_padded_text_sequence(text_list), generate_encoded_grade_lable(dataset), generate_encoded_fairly_lable(dataset)
