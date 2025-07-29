@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from evaluate import history
 from model import create_model
 from preprocess import preprocess
+import os
 
 # Initialize and load model weights
 model = create_model()
@@ -30,5 +31,5 @@ def receive_data():
     return jsonify(resposta), 200
 
 # Run server if executed directly
-if __name__ == '__consult.py__':
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
