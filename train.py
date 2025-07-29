@@ -1,8 +1,12 @@
 import tensorflow as tf
 import os
 from keras.callbacks import ModelCheckpoint
-from preprocess import PADDED_TEXT_SEQUENCE, ENCODED_LABEL_GRADE, ENCODED_LABEL_FAIR
+from preprocess import preprocess
 from model import MODEL
+from data_input import generate_train_dataset
+
+# Defining constants:
+PADDED_TEXT_SEQUENCE, ENCODED_LABEL_GRADE, ENCODED_LABEL_FAIR = preprocess(generate_train_dataset())
 
 # Define training dataset:
 text_tensor = tf.data.Dataset.from_tensor_slices(tf.convert_to_tensor(PADDED_TEXT_SEQUENCE))
