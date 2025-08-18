@@ -38,7 +38,7 @@ def generate_train_dataset():
 def generate_evaluate_dataset():
     gdown.download(tfm_evaluation_dataset_url, tfm_evaluation_dataset_output, quiet=False)
 
-    with open(tfm_evaluation_dataset_output, 'r', encoding='utf=8') as dataset:
+    with open(tfm_evaluation_dataset_output, 'r', encoding='utf-8') as dataset:
         dataset = json.load(dataset)
     
     os.remove(tfm_evaluation_dataset_output)
